@@ -144,5 +144,41 @@ Visdrone  데이터는 vision 기반 UAV(Unmanned Aerial Vehicle)로 촬영한 �
 
 **Insight**
 
+- 아래 그림과 같이 드론의 rotation으로 인해 화면이 흐려지며 한 프레임 내에 Object가 존재하지 않는 경우가 발생합니다. 이와 같이 드론의 극적인 움직임에 따른 시점 변화 문제로 인해 train의 어려움을 겪을 것으로 예상하여 strong Augmentation을 적용하여 실험을 계획하였습니다.
+- truncation 값이 0인 Object를 학습에서 제외하여 프레임 내 Objet 전체가 있는 data들로만 학습을 진행한다면 Object에 대한 더 정확한 학습과 드론 시점의 중앙에 더욱 집중할 수 있다고 예상하였습니다.
+
+  따라서 truncation 유무와 augmentation(no aug, mixup, mosaic, mixup mosaic)별로 모델 당 총 8개의 실험을 계획하였습니다. 
+![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/8a8c2335-272d-41eb-ad3e-a215be87b2e2)
+
+
+## Model 선정
+
+**MOT 방식 선정**
+- TBD(Tracking By Detection)
+
+먼저 객체 감지 모델(Detection model)을 사용하여 각 프레임 이미지에서의 객체를 먼저 detect 한 후 이 정보를 바탕으로 tracking을 진행하는 방식입니다.
+
+TBD는 다른 tracking 방식보다 Detection 정보를 기반하므로, 객체 검출에 있어서의 정확도가 더 높습니다. 따라서 TBD 방식을 사용했을 때 더 높은 정확도를 보장합니다.
+
+1) Object Detection
+
+2) Data Association
+
+3) Tracklet Generation & Update
+
+그리고 저희 프로젝트에서는 car, pedestrian, van, truck, bus 총 5개의 class에 대한 검출을 시행합니다. 이렇게 여러가지 클래스를 감지할 때 TBD 방식이 더 효과적으로 작동합니다. 
+
+또한 TBD 방식을  사용하며 이제까지 개발된 다양한 Detector 모델과 Tracker 모델을 유연하게 결합하여 사용할 수 있습니다. 
+
+마지막으로 TBD는 빠른 프레임 속도로 객체를 추적하는데 효과적이므로, 실시간 객체 추적에 용이합니다. 
+
+- Detector 선택
+
+detector는 1-stage model과 2-stage model로 나눌 수 있습니다. 2-stage detector는 region proposal과 classification이 순차적으로 이루어집니다. 즉, Localization과 Classification 이 순차적으로 이루어집니다. 이와 다르게 1-stage 모델은 위 두 과정이 동시에 이루어집니다. 2-stage model은 더 높은 정확도를 보이지만, 1-stage model보다 더 시간이 오래 걸립니다. 저희는 좀 더 나은  FPS 성능을 얻어내기 위해 1-stage detector를 선정하였습니다. 
+
+1. RetinaNet
+
+데이터의 각 프레임 내에 Object 가 있는 영역인지 아닌지에 따라(IoU Threshold) positive/negative sample로 구분합니다. 일반적으로 이미지 내의 어려운 양성 샘플(객체영역)보다 쉬운(배경영역)이 압도적으로 많으므로 class imbalance 문제가 발생합니다. Retinanet에서는 새로운  loss function인 focal loss 를 제시하여 class imbalance 문제를 해결하여 모델의 정확도를 높입니다.
+
 
 
