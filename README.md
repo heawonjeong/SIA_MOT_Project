@@ -29,3 +29,104 @@ SIA는 인공지능 기술을 통해 지구 관측의 자동화 및 분석의 �
 ## 프로젝트 기간
 - 23.07.27 ~ 23.08.11
 
+- ![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/ccf92cab-4a2e-4956-b1b8-76d9e884ace5)
+
+
+## Colleagues
+- [정혜원](https://github.com/heawonjeong)
+    - 모델 검토 및 분석
+    - 모델 실험
+    - 논문 리딩
+    - 깃 관리
+- [이정진](https://github.com/jjlee6496)
+    - 프로젝트 방향 설계
+    - 데이터셋 분석 및 정제
+    - 환경 설정
+    - 모델 검토 및 분석
+    - 모델 실험 및 시각화
+
+- [주상현](https://github.com/SangHyun014)
+    - 모델 검토 및 분석
+    - 모델 실험 및 시각화
+
+
+## Tools
+
+### MMTracking
+
+- Torch 1.13.0+cu116
+- python 3.9.17
+- cuda_11.5.r11.5
+- miniconda conda 23.3.1
+- mmcls 0.25.0
+- mmcv-full 1.7.1
+- mmdet 2.28.2
+- mmtrack 0.14.0
+
+### MMDetection
+
+- Torch 1.10.0+cu111
+- python 3.9.17
+- cuda_11.5.r11.5
+- miniconda conda 23.3.1
+- mmengine 0.8.2
+- mmcv 2.0.1
+- mmdet 3.1.0
+- mmpretain 1.0.0
+
+
+## Datasets
+
+**MOT17 데이터셋**
+
+MOT19 데이터셋은 MOTChallenge를 위해 개발된 데이터셋으로, MOT를 위한 평가와 벤치마크를 위해 사용되는 데이터셋입니다. MOT19 데이터셋의 annotation 정보는 COCO format으로 되어있는데 이는 bounding box의 좌상단 좌표와 너비와 높이와 더불어, occlusion 여부, truncation 여부 등을 포함하고 있습니다.
+
+**COCO Format**
+MOT COCO format은 COCO 형식의 기본 구조를 따르면서도 객체 추적 관련 정보를 추가로 포함하여 다중 객체 추적 문제를 다루는 데 특화된 형식입니다. 이를 통해 알고리즘은 객체의 식별, 이동 및 속성 변화를 정확하게 추적할 수 있는 능력을 평가하고 비교할 수 있습니다.
+
+카테고리 id를 포함해서 bounding box의 위치 및 넓이 등을 포함하고 있습니다.
+
+COCO foramt의 예시는 다음과 같습니다.
+
+```python
+{"category_id": 1,
+ "bbox": [374.0, 305.0, 33.0, 89.0], "area": 2937.0,
+"iscrowd": false,
+"visibility": 0.25,
+"mot_instance_id": 0, "mot_conf": 1.0, "mot_class_id": 1,
+"id": 75814, "image_id": 3515, "instance_id": 0}
+
+```
+
+**Visdrone 데이터**
+
+[VIsDrone](https://github.com/VisDrone/VisDrone-Dataset)
+
+Visdrone  데이터는 vision 기반 UAV(Unmanned Aerial Vehicle)로 촬영한 비디오 데이터셋으로, 객체 감지와 추적을 위해 만들어진 대규모 데이터셋입니다.  도시, 시골, 공원 등 다양한 장소와 날씨 및 밝기 조건과 더불어 많은 객체가 밀집되어있거나 물체에 가려진 다양한 상황에서 수집되었습니다. 객체는 자동차, 보행자, 자전거와 같은 11개의 다양한 클래스로 분류되고, 260만개 이상의 ground-truth bounding box와 annotation 정보를 포함하고 있습니다. annotatino 정보에는 객체 클래스와 bounding box 위치와 크기 정보 이외에도 occlusion 정도, truncation 유뮤와 같은 중요한 속성도 제공됩니다.
+
+
+**Annotation**
+
+- frame_index: 비디오 프레임의 인덱스로 1부터 시작합니다.
+- target_id: 다른 프레임들 사이에 bounding boxes의 시간적인 대응 관계를 보기 위해 사용합니다
+- bbox: x,y,w,h 좌상단 x,y 좌표와 넓이, 높이
+- score: confidence score
+- Object Category
+    
+    ```
+    Classes in VisDrone:
+    0: 'ignored regions' - 무시할 영역, 주로 일정범위 떨어져 있는 구역에 표시가 되어 있음
+    1: 'pedestrian' - 보행자, 움직임이 있는 사람들
+    2: 'people' - 정적인 사람들. 주로 탈것에 앉아있거나 바닥에 앉아있는것 처럼 움직임이 없다
+    3: 'bicycle'
+    4: 'car'
+    5: 'van'
+    6: 'truck'
+    7: 'tricycle'
+    8: 'awning-tricycle'
+    9: 'bus'
+    10: 'motor',
+    11: 'others'
+    ```
+
+    아래 그림과 같이 Category가 0인 Object는 confidence score가 0입니다.  
