@@ -135,4 +135,14 @@ Visdrone  데이터는 vision 기반 UAV(Unmanned Aerial Vehicle)로 촬영한 �
   - truncation: Object의 Truncation 여부(0 or 1). Object 전체가 프레임 내에 완전히 존재하면 Truncation이 일어나지 않은 것이고, Object가 프레임 밖으로 잘리면 Truncation이 발생한 것입니다. 빨간색 Bounding Box는 Truncation이 1, 초록색 Boudning Box는 0입니다. 
     ![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/09019b19-aa7f-4c26-bfda-f430c16ec3b7)
 
-    - occlusion: Object가 다른 물체 혹은 다른Object에 가려졌을 때 Occlusion이 발생했다고 하며 그 정도에 따라 0, 1, 2 로 점수를 매깁니다. 
+    - occlusion: Object가 다른 물체 혹은 다른Object에 가려졌을 때 Occlusion이 발생했다고 하며 그 정도에 따라 0, 1, 2 로 점수를 매깁니다.
+      ![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/7261f393-a9a2-4f63-a99c-7aa388cb1935)
+
+
+**데이터 정제**
+- 자전거, motor 종류는 주로 사람과 분리된 Object 2개로 인식하지만 크기가 작아지면 사람과 vehicle이 합쳐져 Object 1개로 인식하는 현상이 발생합니다. 따라서 pedestrian, car, van, bus, truck 5가지 class 로 정제하여 사용하였습니다.
+
+**Insight**
+
+
+
