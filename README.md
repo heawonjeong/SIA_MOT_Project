@@ -177,7 +177,7 @@ TBD는 다른 tracking 방식보다 Detection 정보를 기반하므로, 객체 
 detector는 1-stage model과 2-stage model로 나눌 수 있습니다. 2-stage detector는 region proposal과 classification이 순차적으로 이루어집니다. 즉, Localization과 Classification 이 순차적으로 이루어집니다. 이와 다르게 1-stage 모델은 위 두 과정이 동시에 이루어집니다. 2-stage model은 더 높은 정확도를 보이지만, 1-stage model보다 더 시간이 오래 걸립니다. 저희는 좀 더 나은  FPS 성능을 얻어내기 위해 1-stage detector를 선정하였습니다. 
 
 1. RetinaNet
-
+![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/a501c66e-a943-487c-9ead-e75f671e7230)
 데이터의 각 프레임 내에 Object 가 있는 영역인지 아닌지에 따라(IoU Threshold) positive/negative sample로 구분합니다. 일반적으로 이미지 내의 어려운 양성 샘플(객체영역)보다 쉬운(배경영역)이 압도적으로 많으므로 class imbalance 문제가 발생합니다. Retinanet에서는 새로운  loss function인 focal loss 를 제시하여 class imbalance 문제를 해결하여 모델의 정확도를 높입니다.
 
 ![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/e3bcfbc5-1865-42f8-aa10-edead04a3384)
