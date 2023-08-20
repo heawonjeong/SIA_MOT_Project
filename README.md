@@ -129,4 +129,7 @@ Visdrone  데이터는 vision 기반 UAV(Unmanned Aerial Vehicle)로 촬영한 �
     11: 'others'
     ```
 
-    아래 그림과 같이 Category가 0인 Object는 confidence score가 0입니다.  
+    아래 그림과 같이 Category가 0인 Object는 confidence score가 0입니다.
+  ![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/29308b11-012d-4c08-8873-f93f7b874bba)
+
+  - truncation: Object의 Truncation 여부(0 or 1). Object 전체가 프레임 내에 완전히 존재하면 Truncation이 일어나지 않은 것이고, Object가 프레임 밖으로 잘리면 Truncation이 발생한 것입니다. 
