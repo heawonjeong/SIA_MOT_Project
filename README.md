@@ -180,5 +180,10 @@ detector는 1-stage model과 2-stage model로 나눌 수 있습니다. 2-stage d
 
 데이터의 각 프레임 내에 Object 가 있는 영역인지 아닌지에 따라(IoU Threshold) positive/negative sample로 구분합니다. 일반적으로 이미지 내의 어려운 양성 샘플(객체영역)보다 쉬운(배경영역)이 압도적으로 많으므로 class imbalance 문제가 발생합니다. Retinanet에서는 새로운  loss function인 focal loss 를 제시하여 class imbalance 문제를 해결하여 모델의 정확도를 높입니다.
 
+![image](https://github.com/heawonjeong/SIA_MOT_Project/assets/126838460/e3bcfbc5-1865-42f8-aa10-edead04a3384)
+
+2. YOLOX
+
+
 
 
