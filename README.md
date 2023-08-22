@@ -184,6 +184,19 @@ detector는 1-stage model과 2-stage model로 나눌 수 있습니다. 2-stage d
 
 2. YOLOX
 
+YOLOX는 Dynamic Convolution과 PANet 등의 최신 기술을 도입하여 객체 감지에 유리한 특성을 가지고 있습니다. 또한 모델의 변형과 확장이 용이하며, 최적화된 네트워크 구조와 알고리즘을 사용하여 학습과 추론 속도를 가지므로 빠른 훈련과 실시간 객체 감지에 적합합니다.   
 
+YOLOX의 핵심은 다음 구조로 설명할 수 있습니다.
+
+- backbone과 neck은 기존의 yolov3와 동일합니다.
+- YOLOX는 우측 그림에서 보이는 것처럼 head가 분리되어 Classification에는 FC Head, Localization에서는 Convolution Head를 적용하여 성능 향상을 이루었습니다.
+    - 이를 통해 Convergence 속도가 빠르고 AP가 향상되었습니다.
+
+YOLO는 다양한 버전을 가지고 있는 모델입니다. 현재 V8까지 발전하여 높은 성능을 보여주고 있습니다. 이러한 것들 중 저희 팀은 baseline으로 제시된 YOLOX 를 선정하였습니다.
+
+우선 model을 선정한 이유는 다음과 같습니다.
+
+1. 짧은 기간과 한정적 실험 등으로 최대한 여러 시도들을 해보고자 mmtracking 내 지원하는 model들 중 적합한 one-stage model이며 속도와 성능 모두 가지고 있는 모델입니다.
+2. Mixup과 Mosaic 강력한 Augmentation을 적용하여 높은 성능을 보여줍니다. 이를 통해 다음과 같은 Augmentation이 model 성능에 있어 어떤 영향을 미치는지 보고자 하였습니다.
 
 
