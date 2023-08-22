@@ -235,6 +235,7 @@ MixUp의 아이디어는 두 개의 다른 이미지를 섞어서 새로운 이�
 
 
 **Settings**
+
    
 | 구분                      | 기본 Settings                                 |
 | ----------------------- | ------------------------------------------- |
@@ -272,6 +273,11 @@ MixUp의 아이디어는 두 개의 다른 이미지를 섞어서 새로운 이�
 | YOLOX_No_trunc_Mosaic           | O    | X     | O      | X          | 0.1862 | 0.13   | 0.342  |
 | YOLOX_No_trunc_MixUp+Mosaic     | O    | O     | O      | X          | 0.1473 | 0.1246 | 0.2868 |
 
+
+  ![image](https://github.com/jjlee6496/DeMaSIA/blob/main/imgs/HOTA.png)
+
+  회색 점선은 HOTA, 파란 숫자는 HOTA기준 등수 입니다. 
+
 1. Augmentation
    
 - YOLOX 모델의 경우 Augmentation이 성능 향상에 큰 영향을 미쳤습니다. 특히 MixUp을 적용하였을 때 AssA를 향상시키며 효과적인 결과를 얻었습니다.
@@ -282,6 +288,7 @@ MixUp의 아이디어는 두 개의 다른 이미지를 섞어서 새로운 이�
 2. Truncation
 
 - 예상한 결과와 달리, Truncation이 1인 Object를 제외하고 학습시켰을 때 오히려 성능이 하락했습니다.
+  
 
 
 ## Development
