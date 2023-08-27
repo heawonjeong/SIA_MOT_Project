@@ -232,7 +232,10 @@ MixUp의 아이디어는 두 개의 다른 이미지를 섞어서 새로운 이�
   ![image](https://github.com/jjlee6496/DeMaSIA/blob/main/imgs/Truncation1.png)
   ![image](https://github.com/jjlee6496/DeMaSIA/blob/main/imgs/Truncation2.png)
 
+- 아래와 같이 ignored region과 함께 감지할 객체들이 함께 나타나는 bouding box는 제외합니다.
 
+  
+  ![image](https://github.com/jjlee6496/DeMaSIA/blob/main/imgs/ignored_regions.gif)
 
 **Settings**
 
